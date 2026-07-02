@@ -4,6 +4,13 @@ const express = require('express');
 // Create an Express app
 const app = express();
 
+console.log("APPLICATION STARTED");
+
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 
